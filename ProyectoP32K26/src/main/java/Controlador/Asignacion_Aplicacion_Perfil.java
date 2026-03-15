@@ -9,9 +9,9 @@ package Controlador;
  * @author Jorge Reyes
  */
 public class Asignacion_Aplicacion_Perfil {
-    public Asignacion_Aplicacion_Perfil(int AplCódigo, int UsuCódigo) {
+    public Asignacion_Aplicacion_Perfil(int AplCódigo, int PerCódigo) {
         this.AplCódigo = AplCódigo;
-        this.UsuCódigo = UsuCódigo;
+        this.PerCódigo = PerCódigo;
     }
 
     public int getAplCódigo() {
@@ -22,21 +22,21 @@ public class Asignacion_Aplicacion_Perfil {
         this.AplCódigo = AplCódigo;
     }
 
-    public int getUsuCódigo() {
-        return UsuCódigo;
+    public int getPerCódigo() {
+        return PerCódigo;
     }
 
-    public void setUsuCódigo(int UsuCódigo) {
-        this.UsuCódigo = UsuCódigo;
+    public void setPerCódigo(int PerCódigo) {
+        this.PerCódigo = PerCódigo;
     }
 
     @Override
     public String toString() {
-        return "Asignacion_Aplicacion_Perfil{" + "AplCódigo=" + AplCódigo + ", UsuCódigo=" + UsuCódigo + '}';
+        return "Asignacion_Aplicacion_Perfil{" + "AplCódigo=" + AplCódigo + ", PerCódigo=" + PerCódigo + '}';
     }
 
 
-    int AplCódigo, UsuCódigo;
+    int AplCódigo, PerCódigo;
     
     
     public Asignacion_Aplicacion_Perfil(){
