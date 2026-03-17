@@ -13,13 +13,13 @@ package Controlador; // Define el paquete al que pertenece la clase
 public class Usuario {
 
     // Atributos privados que representan los datos del usuario
-    private int codigo;        // Identificador único del usuario
-    private String nombre;      // Nombre completo del usuario
-    private String correo;      // Dirección de correo electrónico
-    private String telefono;    // Número de contacto
-    private String direccion;   // Dirección física del usuario
-    private String contrasena;  // Clave de acceso al sistema
-    private String estado;      // Estado de la cuenta (ej. Activo/Inactivo)
+    private int usucodigo;        // Identificador único del usuario
+    private String usunombre;      // Nombre completo del usuario
+    private String usucorreo;      // Dirección de correo electrónico
+    private String usutelefono;    // Número de contacto
+    private String usudireccion;   // Dirección física del usuario
+    private String usucontrasena;  // Clave de acceso al sistema
+    private String usuestado;      // Estado de la cuenta (ej. Activo/Inactivo)
 
     // Constructor vacío (necesario para frameworks o inicializaciones sin datos)
     public Usuario() {
@@ -27,72 +27,72 @@ public class Usuario {
 
     // Constructor con parámetros para inicializar todos los atributos al crear el objeto
     public Usuario(int codigo, String nombre, String correo, String telefono, String direccion, String contrasena, String estado) {
-        this.codigo = codigo;      // Asigna el código recibido al atributo de la clase
-        this.nombre = nombre;      // Asigna el nombre recibido
-        this.correo = correo;      // Asigna el correo recibido
-        this.telefono = telefono;  // Asigna el teléfono recibido
-        this.direccion = direccion; // Asigna la dirección recibida
-        this.contrasena = contrasena; // Asigna la contraseña recibida
-        this.estado = estado;      // Asigna el estado recibido
+        this.usucodigo = codigo;      // Asigna el código recibido al atributo de la clase
+        this.usunombre = nombre;      // Asigna el nombre recibido
+        this.usucorreo = correo;      // Asigna el correo recibido
+        this.usutelefono = telefono;  // Asigna el teléfono recibido
+        this.usudireccion = direccion; // Asigna la dirección recibida
+        this.usucontrasena = contrasena; // Asigna la contraseña recibida
+        this.usuestado = estado;      // Asigna el estado recibido
     }
 
     // --- MÉTODOS GETTERS Y SETTERS ---
     // Sirven para obtener (get) o modificar (set) los atributos privados
 
     public int getCodigo() {
-        return codigo; // Devuelve el valor del código
+        return usucodigo; // Devuelve el valor del código
     }
 
     public void setCodigo(int codigo) {
-        this.codigo = codigo; // Actualiza el valor del código
+        this.usucodigo = codigo; // Actualiza el valor del código
     }
 
     public String getNombre() {
-        return nombre; // Devuelve el nombre
+        return usunombre; // Devuelve el nombre
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre; // Actualiza el nombre
+        this.usunombre = nombre; // Actualiza el nombre
     }
     
     public String getCorreo() {
-        return correo; // Devuelve el correo
+        return usucorreo; // Devuelve el correo
     }
 
     public void setCorreo(String correo) {
-        this.correo = correo; // Actualiza el correo
+        this.usucorreo = correo; // Actualiza el correo
     }
 
     public String getTelefono() {
-        return telefono; // Devuelve el teléfono
+        return usutelefono; // Devuelve el teléfono
     }
 
     public void setTelefono(String telefono) {
-        this.telefono = telefono; // Actualiza el teléfono
+        this.usutelefono = telefono; // Actualiza el teléfono
     }
 
     public String getDireccion() {
-        return direccion; // Devuelve la dirección
+        return usudireccion; // Devuelve la dirección
     }
 
     public void setDireccion(String direccion) {
-        this.direccion = direccion; // Actualiza la dirección
+        this.usudireccion = direccion; // Actualiza la dirección
     }
 
     public String getContrasena() {
-        return contrasena; // Devuelve la contraseña
+        return usucontrasena; // Devuelve la contraseña
     }
 
     public void setContrasena(String contrasena) {
-        this.contrasena = contrasena; // Actualiza la contraseña
+        this.usucontrasena = contrasena; // Actualiza la contraseña
     }
 
     public String getEstado() {
-        return estado; // Devuelve el estado actual
+        return usuestado; // Devuelve el estado actual
     }
 
     public void setEstado(String estado) {
-        this.estado = estado; // Actualiza el estado (ej. Activo/Inactivo)
+        this.usuestado = estado; // Actualiza el estado (ej. Activo/Inactivo)
     }
 }
 
