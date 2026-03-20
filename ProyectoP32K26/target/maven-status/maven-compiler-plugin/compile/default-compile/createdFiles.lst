@@ -22,12 +22,14 @@ Vista\frmMantenimientoUsuario$7.class
 Vista\frmMantenimientoUsuario$3.class
 Vista\MdiSeguridad$5.class
 Vista\frmLogin$5.class
+Modelo\AsignacionAplicacionPerfilDAO.class
 Vista\frmMantenimientoUsuario$5.class
 Vista\MdiSeguridad$10.class
 Vista\MdiSeguridad$15.class
 Vista\MdiSeguridad$17.class
 Vista\frmMantenimientoUsuario$1.class
 Vista\MdiSeguridad$7.class
+Controlador\clsAsignacionAplicacionPerfil.class
 Vista\frmMantenimientoUsuario$6.class
 Vista\MdiSeguridad$12.class
 Modelo\BitacoraDAO.class
