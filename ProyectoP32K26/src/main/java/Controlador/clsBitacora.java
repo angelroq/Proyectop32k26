@@ -6,7 +6,7 @@ package Controlador;
 
 import java.time.LocalDateTime;
 
-public class Bitacora {
+public class clsBitacora {
     private int Bitcodigo;
     private int Usucodigo;
     private int Aplcodigo;
@@ -16,11 +16,11 @@ public class Bitacora {
     private String Bitaccion;
 
     // Constructor vacío
-    public Bitacora() {
+    public clsBitacora() {
     }
 
     // Constructor con parámetros
-    public Bitacora(int Usucodigo, int Aplcodigo, LocalDateTime Bitfecha,String Bitip, String Bitequipo, String Bitaccion) {
+    public clsBitacora(int Usucodigo, int Aplcodigo, LocalDateTime Bitfecha,String Bitip, String Bitequipo, String Bitaccion) {
         this.Usucodigo = Usucodigo;
         this.Aplcodigo = Aplcodigo;
         this.Bitfecha  = Bitfecha;

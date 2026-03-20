@@ -6,6 +6,7 @@
 package Vista;
 
 
+
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -280,7 +281,7 @@ public class MdiSeguridad extends javax.swing.JFrame {
 
     private void mantenimientoUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoUsuariosActionPerformed
         // TODO add your handling code here:
-        Formusuario ventana = new Formusuario();
+        frmMantenimientoUsuario ventana = new frmMantenimientoUsuario();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
@@ -306,11 +307,11 @@ public class MdiSeguridad extends javax.swing.JFrame {
 
     private void mantenimientoAplicacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoAplicacionesActionPerformed
         // TODO add your handling code here:
-        AplicacionesForm ventana = new AplicacionesForm();
-        jDesktopPane1.add(ventana);
-        Dimension desktopSize = jDesktopPane1.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+        //frmAplicaciones ventana = new frmAplicaciones();
+        //jDesktopPane1.add(ventana);
+        //Dimension desktopSize = jDesktopPane1.getSize();
+        //Dimension FrameSize = ventana.getSize();
+        //ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_mantenimientoAplicacionesActionPerformed
 
     private void mantenimientoModulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoModulosActionPerformed
@@ -324,11 +325,11 @@ public class MdiSeguridad extends javax.swing.JFrame {
 
     private void mantenimientoPerfilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoPerfilesActionPerformed
         // TODO add your handling code here:
-        frmPerfiles ventana = new frmPerfiles();
-        jDesktopPane1.add(ventana);
-        Dimension desktopSize = jDesktopPane1.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);        
+        //frmPerfiles ventana = new frmPerfiles();
+        //jDesktopPane1.add(ventana);
+        //Dimension desktopSize = jDesktopPane1.getSize();
+        //Dimension FrameSize = ventana.getSize();
+        //ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);        
     }//GEN-LAST:event_mantenimientoPerfilesActionPerformed
 
     private void mantenimientoTipoUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoTipoUsuariosActionPerformed
@@ -346,11 +347,11 @@ public class MdiSeguridad extends javax.swing.JFrame {
 
     private void consultaBitacoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaBitacoraActionPerformed
         // TODO add your handling code here:
-        MantenimientoBitacora ventana = new MantenimientoBitacora();
-        jDesktopPane1.add(ventana);
-        Dimension desktopSize = jDesktopPane1.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+        //MantenimientoBitacora ventana = new MantenimientoBitacora();
+        //jDesktopPane1.add(ventana);
+        //Dimension desktopSize = jDesktopPane1.getSize();
+        //Dimension FrameSize = ventana.getSize();
+        //ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_consultaBitacoraActionPerformed
 
     private void aplicacionesUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aplicacionesUsuariosActionPerformed

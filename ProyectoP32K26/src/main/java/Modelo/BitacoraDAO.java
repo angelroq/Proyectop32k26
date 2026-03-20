@@ -1,12 +1,15 @@
 //Documentación: Astrid Fernanda Ruíz López 9959 24 2976
 package Modelo;
 
-import Controlador.Bitacora;
+import Controlador.clsBitacora;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp; //manejo de fechas usado por la bd sql
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime; //para la fechas y horas en java
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +27,40 @@ public class BitacoraDAO {
 
 
     // SELECT (trae todos los registros) 
-    public List<Bitacora> select() {
+        public String fechaActual() {
+
+        java.util.Date fecha = new java.util.Date();
+        //SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/YYYY");
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("YYYY/MM/dd HH:mm:ss");
+
+        return formatoFecha.format(fecha);
+
+    }
+
+    public static String horaActual() {
+
+        java.util.Date fecha = new java.util.Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("hh:mm:ss");
+
+        return formatoFecha.format(fecha);
+
+    }
+    
+    private String obtenerNombrePc() throws UnknownHostException {
+        // return System.getProperty("user.name");        
+        return InetAddress.getLocalHost().getHostName();
+    }
+            
+    private String obtenerIP() throws UnknownHostException {
+        InetAddress ip = InetAddress.getLocalHost();
+        return ip.getHostAddress();
+    }        
+    public List<clsBitacora> select() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Bitacora bitacora = null;
-        List<Bitacora> bitacoras = new ArrayList<Bitacora>(); //lista para almacenar todos los registros
+        clsBitacora bitacora = null;
+        List<clsBitacora> bitacoras = new ArrayList<clsBitacora>(); //lista para almacenar todos los registros
 
         try {
             conn = Conexion.getConnection();
@@ -45,7 +76,7 @@ public class BitacoraDAO {
                 String Bitequipo = rs.getString("Bitequipo");
                 String Bitaccion = rs.getString("Bitaccion");
 
-                bitacora = new Bitacora();
+                bitacora = new clsBitacora();
                 bitacora.setBitcodigo(Bitcodigo);
                 bitacora.setUsucodigo(Usucodigo);
                 bitacora.setAplcodigo(Aplcodigo);
@@ -69,20 +100,30 @@ public class BitacoraDAO {
     }
 
     // Isert
-    public int insert(Bitacora bitacora) {
+    public int insert(clsBitacora bitacora) {
         Connection conn = null;
         PreparedStatement stmt = null;
+        String ipAsignada;
+        String nombrepcAsignada;
+        ipAsignada = " ";
+        nombrepcAsignada = " ";        
         int rows = 0;
 
         try {
             conn = Conexion.getConnection();
+            try {
+                   ipAsignada= obtenerIP();
+                   nombrepcAsignada= obtenerNombrePc();            
+            } catch (UnknownHostException ex)
+                {
+                }                           
             //asignación d valores a los parametros
             stmt = conn.prepareStatement(SQL_INSERT);
             stmt.setInt(1, bitacora.getUsucodigo());
             stmt.setInt(2, bitacora.getAplcodigo());
-            stmt.setTimestamp(3, Timestamp.valueOf(bitacora.getBitfecha())); //se convierte la fecha a Timestamp, ese timestamp se envía a la base d datos
-            stmt.setString(4, bitacora.getBitip());
-            stmt.setString(5, bitacora.getBitequipo());
+            stmt.setTimestamp(3, Timestamp.valueOf(fechaActual())); //se convierte la fecha a Timestamp, ese timestamp se envía a la base d datos
+            stmt.setString(4, ipAsignada);
+            stmt.setString(5, nombrepcAsignada);
             stmt.setString(6, bitacora.getBitaccion());
 
             System.out.println("Ejecutando query: " + SQL_INSERT);
@@ -98,7 +139,7 @@ public class BitacoraDAO {
     }
 
     // Query por código 
-    public Bitacora queryPorCodigo(Bitacora bitacora) {
+    public clsBitacora queryPorCodigo(clsBitacora bitacora) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -119,7 +160,7 @@ public class BitacoraDAO {
                 String Bitequipo = rs.getString("Bitequipo");
                 String Bitaccion = rs.getString("Bitaccion");
 
-                bitacora = new Bitacora();
+                bitacora = new clsBitacora();
                 bitacora.setBitcodigo(Bitcodigo);
                 bitacora.setUsucodigo(Usucodigo);
                 bitacora.setAplcodigo(Aplcodigo);
@@ -141,12 +182,12 @@ public class BitacoraDAO {
     //Se hace el mismo proceso para los demás querys: ejecutar la consulta, recorrer el ResultSet, convertir cada registro en un objeto Bitacora y agregarlo a una lista.
     
     // Query por usuario
-    public List<Bitacora> queryPorUsuario(int Usucodigo) {
+    public List<clsBitacora> queryPorUsuario(int Usucodigo) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Bitacora bitacora = null;
-        List<Bitacora> bitacoras = new ArrayList<Bitacora>();
+        clsBitacora bitacora = null;
+        List<clsBitacora> bitacoras = new ArrayList<clsBitacora>();
 
         try {
             conn = Conexion.getConnection();
@@ -163,7 +204,7 @@ public class BitacoraDAO {
                 String Bitequipo = rs.getString("Bitequipo");
                 String Bitaccion = rs.getString("Bitaccion");
 
-                bitacora = new Bitacora();
+                bitacora = new clsBitacora();
                 bitacora.setBitcodigo(Bitcodigo);
                 bitacora.setUsucodigo(usu);
                 bitacora.setAplcodigo(Aplcodigo);
@@ -185,12 +226,12 @@ public class BitacoraDAO {
     }
 
     // Query por aplicación
-    public List<Bitacora> queryPorAplicacion(int Aplcodigo) {
+    public List<clsBitacora> queryPorAplicacion(int Aplcodigo) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Bitacora bitacora = null;
-        List<Bitacora> bitacoras = new ArrayList<Bitacora>();
+        clsBitacora bitacora = null;
+        List<clsBitacora> bitacoras = new ArrayList<clsBitacora>();
 
         try {
             conn = Conexion.getConnection();
@@ -207,7 +248,7 @@ public class BitacoraDAO {
                 String Bitequipo = rs.getString("Bitequipo");
                 String Bitaccion = rs.getString("Bitaccion");
 
-                bitacora = new Bitacora();
+                bitacora = new clsBitacora();
                 bitacora.setBitcodigo(Bitcodigo);
                 bitacora.setUsucodigo(Usucodigo);
                 bitacora.setAplcodigo(apl);
@@ -229,12 +270,12 @@ public class BitacoraDAO {
     }
 
     // Query por rango de fechas
-    public List<Bitacora> queryPorFechas(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+    public List<clsBitacora> queryPorFechas(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Bitacora bitacora = null;
-        List<Bitacora> bitacoras = new ArrayList<Bitacora>();
+        clsBitacora bitacora = null;
+        List<clsBitacora> bitacoras = new ArrayList<clsBitacora>();
 
         try {
             conn = Conexion.getConnection();
@@ -253,7 +294,7 @@ public class BitacoraDAO {
                 String Bitequipo = rs.getString("Bitequipo");
                 String Bitaccion = rs.getString("Bitaccion");
 
-                bitacora = new Bitacora();
+                bitacora = new clsBitacora();
                 bitacora.setBitcodigo(Bitcodigo);
                 bitacora.setUsucodigo(Usucodigo);
                 bitacora.setAplcodigo(Aplcodigo);
@@ -276,12 +317,12 @@ public class BitacoraDAO {
     }
 
     // Query por acción
-    public List<Bitacora> queryPorAccion(String Bitaccion) {
+    public List<clsBitacora> queryPorAccion(String Bitaccion) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Bitacora bitacora = null;
-        List<Bitacora> bitacoras = new ArrayList<Bitacora>();
+        clsBitacora bitacora = null;
+        List<clsBitacora> bitacoras = new ArrayList<clsBitacora>();
 
         try {
             conn = Conexion.getConnection();
@@ -298,7 +339,7 @@ public class BitacoraDAO {
                 String Bitequipo = rs.getString("Bitequipo");
                 String Bitaccion2 = rs.getString("Bitaccion");
 
-                bitacora = new Bitacora();
+                bitacora = new clsBitacora();
                 bitacora.setBitcodigo(Bitcodigo);
                 bitacora.setUsucodigo(Usucodigo);
                 bitacora.setAplcodigo(Aplcodigo);
